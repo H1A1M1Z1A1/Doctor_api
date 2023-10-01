@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect to URL</title>
+</head>
+<style>
+    .box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .container {
+        text-align: center;
+    }
+
+    .textbox {
+        margin: 10px;
+        /* Adjust the spacing between textboxes */
+    }
+</style>
+<body>
+    <div class="box">
+        <div class="container">
+            <div class="row">
+                <form id="redirectForm" method="GET">
+                    <label for="doc_id">ALL Doctors</label>
+                    <button type="button" id="all_doc">Submit</button>
+                </form>
+            </div><br><br><br><br>
+            <h1>OR</h1>
+            <div class="row">
+                <form id="redirectForm2" method="GET">
+                    <label for="doc_id">Enter Doctor ID</label>
+                    <input type="number" placeholder="Enter Doctor ID" id="doc_id" name="doc_id" />
+                    <button type="submit">Submit</button>
+                </form>
+            </div><br><br><br><br>
+            <h1>OR</h1>
+            <div class="row">
+                <form id="redirectForm3" method="GET">
+                    <label for="specialty">Enter Specialty</label>
+                    <select name="specialty" class="form-select" id="specialty" aria-label="Default select example">
+                        <option value="Cardiologist">Cardiologist</option>
+                        <option value="Dermatologist">Dermatologist</option>
+                        <option value="Neurologist">DOGECOIN</option>
+                        <option value="General Surgeon">General Surgeon</option>
+                        <option value="Pediatrician">Pediatrician</option>
+                        <option value="SOLUSDT">Orthopedic Surgeon</option>
+                        <option value="Gynecologist">Gynecologist</option>
+                        <option value="Gynecologist">Oncologist</option>
+                        <option value="Gynecologist">Psychiatrist</option>
+                    </select>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        // JavaScript code to handle form submissions
+        document.getElementById('redirectForm').addEventListener('click', function () {
+            // Redirect to the desired URL without any query parameters
+            window.location.href = '/doctors';
+        });
+
+        document.getElementById('redirectForm2').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent the default form submission behavior
+            const docId = document.getElementById('doc_id').value;
+            if (docId) {
+                // Redirect to the desired URL with the input value as a path parameter
+                window.location.href = `/doctors/${docId}`;
+            }
+        });
+
+        document.getElementById('redirectForm3').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent the default form submission behavior
+            const doc_specialty = document.getElementById('specialty').value;
+            if (doc_specialty) {
+                // Redirect to the desired URL with the input value as a path parameter
+                window.location.href = `/doctors/${doc_specialty}`;
+            }
+        });
+    </script>
+</body>
+</html>
